@@ -8,6 +8,9 @@
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id',$id, PDO::PARAM_INT);
     if ($stmt->execute()){
+        // header('Location:in.php');
+        exit();
+
         echo"Status pasien berhasil diubah menjadi selesai";
     }else{
         echo"Error: gagal mengubah status";

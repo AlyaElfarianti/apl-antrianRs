@@ -25,6 +25,17 @@
  }
 </style>
 
+
+<!-- <form method="POST">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="username"  placeholder="Masukkan email" required>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary"  name="email" >Create Akun</button>
+            </div>
+        </form> -->
+
 <form method="POST">
 	<div class="mb-3 mt-3">
         <label for="nama" class="form-label">Nama:</label>
@@ -36,6 +47,7 @@
     </div>
 
     <button type="submit" name="btn" class="btn btn-primary">Submit</button>
+    <p class="mt-3"><a href="user.php" class="text-primary">Buat Akun</a></p>
 </form>
 
 <?php
@@ -62,7 +74,7 @@ if (isset($_POST['btn'])) {
                 header('Location: index.php');
                 exit;
             } else {
-                echo "<p class='text-danger'>User tidak ditemukan.</p>";
+                echo "<p class='text-danger'>Belum punya akun?</p>";
             }
         } else {
             echo "<p class='text-danger'>Kesalahan dalam query.</p>";

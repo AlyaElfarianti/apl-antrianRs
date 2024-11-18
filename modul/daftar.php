@@ -21,7 +21,7 @@
 </head>
 <style>
 h2{
-    font-family:serif;
+    font-family:Times New Roman;
     margin-bottom:20px;
     margin-top:10px;
 
@@ -78,9 +78,11 @@ thead th {
     font-size: 14px;
 }
 td{
+    font-family:Pacifico;
+}
+th{
     font-family:serif;
 }
-
 /* Style untuk baris tabel */
 tbody tr {
     border-bottom: 1px solid #ddd; /* Garis pemisah antar baris */

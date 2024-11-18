@@ -1,6 +1,7 @@
 <?php 
 include '../lib/koneksi.php';
 
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "DELETE FROM antrian WHERE id=:id";
@@ -8,7 +9,7 @@ if (isset($_GET['id'])) {
     
     try {
         $stmt->execute([':id' => $id]);
-        echo "Data antrian berhasil dihapus";
+        // header('Location:daftar.php');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -24,11 +25,6 @@ if (isset($_GET['id'])) {
     <title>Document</title>
 </head>
 <body>
-<div class="container mt-5">
-        <!-- Notifikasi -->
-        
-        <!-- Tombol Kembali -->
-        <a href="daftar.php" class="btn btn-primary">Kembali ke Daftar</a>
-    </div>
+
 </body>
 </html>
