@@ -20,7 +20,12 @@
     <title>Document</title>
 </head>
 <style>
+h2{
+    font-family:serif;
+    margin-bottom:20px;
+    margin-top:10px;
 
+}
 /* Style dasar untuk tombol */
 button {
     border: none;
@@ -62,7 +67,6 @@ button a[href*="delete"]:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    font-family: Arial, sans-serif;
 }
 
 /* Style untuk header tabel */
@@ -70,9 +74,11 @@ thead th {
     background-color: #007bff; /* Warna biru untuk header */
     color: white;
     padding: 12px;
-    text-align: left;
-    font-weight: bold;
+    text-align: center;
     font-size: 14px;
+}
+td{
+    font-family:serif;
 }
 
 /* Style untuk baris tabel */
@@ -108,7 +114,6 @@ table, th, td {
 
 </style>
 <body>
-    
 
 
 <table >   
