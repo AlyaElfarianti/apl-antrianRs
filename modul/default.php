@@ -179,56 +179,55 @@ header h1 {
 .add-button:hover {
     background-color: #218838;
 }
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
+/* Background minimalis */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100px;
+  background-color: #f0f4f8; /* Warna abu-abu terang */
 }
 
-.data-table thead {
-    background-color: #3498db;
+/* Konten di tengah */
+.content {
+  text-align: center;
+}
+
+/* Nama */
+.name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* Warna teks abu gelap */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  border-bottom: 2px solid #007bff; /* Garis bawah biru formal */
+  padding-bottom: 10px;
+}
+
+/* Ikon */
+.name  {
+  font-size: 2rem; /* Ukuran ikon kecil */
+  color: #007bff; /* Warna ikon sama dengan garis */
+}
+btn{
+    background-color: #28a745;
     color: white;
-}
-
-.data-table th, .data-table td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-.edit-button, .delete-button {
-    padding: 5px 10px;
     border: none;
-    color: white;
-    border-radius: 3px;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
+    float:right; 
 }
 
-.edit-button {
-    background-color: #3498db;
-}
 
-.delete-button {
-    background-color: #e74c3c;
-}
-
-.edit-button:hover {
-    background-color: #2980b9;
-}
-
-.delete-button:hover {
-    background-color: #c0392b;
-}
-header h1{
-    teks-align:center;
-}
 
 </style>
 
 <body>
 
-    <!-- <div class="container"><!--tambah data-antrian--->
+    <!-- <div class="container"><tambah data-antrian--->
         <!-- <h2>Antrian Pasien</h2>
         <a href="?page=tambah"><button class="add-btn"> + Tambah Data Antrian
         </a>
@@ -236,13 +235,15 @@ header h1{
 
         
         </a> -->
-    <!-- </div> --> -->
+    <!-- </div> -->
 
     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <title>Admin</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -250,20 +251,27 @@ header h1{
     <p class="atas"></p>
     <div class="sidebar">
         <h2>Admin Antrian-Rs</h2>
-        <p>Administrator - Online</p>
+        <center><h3><?=$resultuser['username']?></h3></center>
         <nav>
             <ul>
                 <ul>
                     <li><a href="?page=tambah"><button class="add-button">Tambah Data Antrian</button></a></li>
                     <li><a href="?page=daftar" class="active">Daftar Antrian</a></li>
+                    <li><a href="?page=keluar"><button class="add-button">logout</button></a></li>
                 </ul>
             </ul>
         </nav>
     </div>
     <div class="main-content">
-        <header>
-            <h1>Jenjang</h1>
-        </header>
+    <div class="container">
+  <div class="content">
+    <p class="name">
+      <i class="fas fa-hospital-symbol">Layanan RS
+    </p>
+  </div>
+</div>
+
+
         <!-- <table class="data-table">
             <thead>
                 <tr>
@@ -287,7 +295,7 @@ header h1{
                 </tr>
             </tbody>
         </table> -->
-    </div> -->
+    <!-- </div> --> 
 </body>
 </html>
 

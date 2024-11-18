@@ -1,16 +1,17 @@
 <?php 
 session_start();
 include "lib/koneksi.php";
-
-//if (!isset($_SESSION['user_id'])) {
-  //  include "login.php";
-//} else {
-    //$sqluser = $conn->query("SELECT * FROM tbusers WHERE id='$_SESSION[user_id]'");
-    //$resultuser = $sqluser->fetch_array();
-
+if (!isset($_SESSION['iduser'])) {
+   include "login.php";
+   exit();
+} else {
+    $sqluser = $conn->query("SELECT*FROM tbusers WHERE id='$_SESSION[iduser]'");
+    $resultuser = $sqluser->fetch(PDO::FETCH_ASSOC);
     // Sekarang $resultuser dapat diakses sebagai array asosiatif
     // Contoh: echo $resultuser['username'];
-//}
+
+
+
 ?>
 
 
@@ -24,7 +25,7 @@ include "lib/koneksi.php";
 </head>
 <body>
     
-<?php 
+ <?php 
      $page = isset ($_GET['page'])?$_GET['page']:null;
      if (isset($page)) {
       
@@ -32,16 +33,19 @@ include "lib/koneksi.php";
      include"modul/tambah.php";
       }
       if ($page=='daftar') {
-        include"modul/daftar-antrian.php";
+        include"modul/daftar.php";
          }
-   
-
-
+             if($page=='keluar'){
+                include"modul/keluar.php";
+             }
+      
 }else{
       include"modul/default.php";
   }
 ?>
 
-    
+   
 </body>
 </html>
+
+<?php } ?>

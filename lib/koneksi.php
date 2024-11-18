@@ -7,7 +7,7 @@ $dbname = "rumahsakit";
 try{
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username,$pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "koneksi berhasil";
+    // echo "koneksi berhasil";
 }catch (PDOException $e){
     echo"koneksi gagal : ".$e->getMessage();
 }

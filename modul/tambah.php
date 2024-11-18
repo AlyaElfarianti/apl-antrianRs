@@ -9,7 +9,6 @@
 </head>
 
 <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -37,17 +36,12 @@ body {
 
 /* Notifikasi */
 .notification {
-    display: none;
     background-color: #28a745;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
-    position: absolute;
-    bottom: -50px; /* Atur posisi notifikasi di bawah form */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
+    margin-bottom: 15px;
 }
 
 .form-container {
@@ -94,45 +88,63 @@ body {
     background-color: #218838;
 }
 
+/* Tombol Kembali */
+.back-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
 </style>
 <body>
 
-
 <?php 
- include 'lib/koneksi.php';
+include 'lib/koneksi.php';
 
- if($_SERVER["REQUEST_METHOD"] == "POST") {
-   $nama_pasien = $_POST['nama_pasien'];
-   $nomor_antrian = $_POST['nomor_antrian'];
-   $waktu_kedatangan = $_POST['waktu_kedatangan'];
-   $sql = "INSERT INTO antrian (nama_pasien, nomor_antrian,waktu_kedatangan)
-    VALUES (:nama_pasien, :nomor_antrian, :waktu_kedatangan)";
-   
-   $stmt = $conn->prepare($sql);
-   $stmt->bindParam(':nama_pasien', $nama_pasien);
-   $stmt->bindParam(':nomor_antrian', $nomor_antrian);
-   $stmt->bindParam(':waktu_kedatangan', $waktu_kedatangan);
+// Variabel untuk pesan notifikasi
+$notif = '';
 
-   if($stmt->execute()) {
-    //echo "data antrian berhasil ditambahkan";
-
-   }else{
-    echo "error: gagal menambahkan data";
-   }
-
-
- }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama_pasien = $_POST['nama_pasien'];
+    $nomor_antrian = $_POST['nomor_antrian'];
+    $waktu_kedatangan = $_POST['waktu_kedatangan'];
+    
+    $sql = "INSERT INTO antrian (nama_pasien, nomor_antrian, waktu_kedatangan)
+            VALUES (:nama_pasien, :nomor_antrian, :waktu_kedatangan)";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':nama_pasien', $nama_pasien);
+    $stmt->bindParam(':nomor_antrian', $nomor_antrian);
+    $stmt->bindParam(':waktu_kedatangan', $waktu_kedatangan);
+    
+    if ($stmt->execute()) {
+        $notif = 'Data berhasil ditambahkan!'; // Menampilkan pesan sukses
+    } else {
+        $notif = 'Gagal menambahkan data.';
+    }
+}
 ?>
 
-
-
-    <div class="container">
-    <div id="notification" class="notification">
-            Data berhasil ditambahkan!
+<div class="container">
+    <!-- Notifikasi jika data berhasil ditambahkan -->
+    <?php if ($notif != ''): ?>
+        <div class="notification">
+            <?php echo $notif; ?>
         </div>
+    <?php endif; ?>
 
-        <!-- Form Tambah Data Antrian -->
-        <form method= "POST" action="tambah-antrian.php">
+    <!-- Form Tambah Data Antrian -->
+    <form method="POST">
         <div class="form-container">
             <h3>Tambah Data Antrian</h3>
             <label for="nama">Nama Pasien:</label>
@@ -144,27 +156,13 @@ body {
             <label for="waktu">Waktu Kedatangan:</label>
             <input type="datetime-local" name="waktu_kedatangan" required>
 
-            <button class="add-btn"  onclick="showNotification()">Tambah</button>
+            <button type="submit" class="add-btn">Tambah</button>
         </div>
-</form>
-    </div>
+    </form>
 
-<script>
-function showNotification() {
-    // Tampilkan notifikasi
-    const notification = document.getElementById('notification');
-    notification.style.display = 'block';
-
-    // Sembunyikan notifikasi setelah 3 detik
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 3000);
-}
-
-  
-</script>
+    <!-- Tombol Kembali -->
+    <a href="index.php"><button class="back-btn">Kembali ke Halaman Utama</button></a>
+</div>
 
 </body>
 </html>
-
-
